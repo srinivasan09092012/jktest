@@ -9,20 +9,6 @@ trigger:
     include:
       - '*'
 
-parameters:
-- name: trigger_type
-  displayName: Select trigger type
-  type: string
-  default: CI
-  values:
-  - CI
-  - Release
-  - EOS
-- name: sprint_number
-  displayName: Sprint Number
-  type: string
-  default: " "
-
 variables:
 - name: buildTimeStamp # will be set by script
 - name: buildNum
@@ -47,6 +33,7 @@ stages:
        targetType: 'inline'
        script: |
         $AzureDevOpsAuthenicationHeader = @{Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$(AdoUserid):$(AdoPassword)")) }
+        write-host "Auth print"
         write-host $AzureDevOpsAuthenicationHeader
         $body =@{
           definition = @{
