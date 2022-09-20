@@ -17,14 +17,6 @@ trigger:
       - '*'
 
 parameters:
-- name: trigger_type
-  displayName: Select trigger type
-  type: string
-  default: CI
-  values:
-  - CI
-  - Release
-  - EOS
 - name: sprint_number
   displayName: Sprint Number
   type: string
@@ -48,3 +40,15 @@ stages:
     steps:
     - checkout: self 
       clean: true
+  - job: Checkout
+    variables:     
+      SPNum : ${{parameters.sprint_number}}
+
+    steps:
+    - task: PowerShell@2
+      displayName: set variable buildTimeStamp and Build Number
+      inputs:
+       targetType: 'inline'
+       script: |
+        Write-Host $(SPNum)
+   
