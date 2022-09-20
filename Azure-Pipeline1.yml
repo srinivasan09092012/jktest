@@ -1,0 +1,43 @@
+---
+# Preety Print the  
+trigger:
+  branches:
+    include:
+      - main
+
+  tags:
+    include:
+      - '*'
+
+parameters:
+- name: trigger_type
+  displayName: Select trigger type
+  type: string
+  default: CI
+  values:
+  - CI
+  - Release
+  - EOS
+- name: sprint_number
+  displayName: Sprint Number
+  type: string
+  default: " "
+
+variables:
+- name: buildTimeStamp # will be set by script
+- name: buildNum
+
+stages:
+
+- stage: Initialize
+  pool: 
+   name: Azure-GitHub
+   demands:
+    - agent.name -equals AZ-GH
+  jobs:
+  - job: Checkout
+    timeoutInMinutes: 0
+    displayName: 'Checkout'
+    steps:
+    - checkout: self 
+      clean: true
