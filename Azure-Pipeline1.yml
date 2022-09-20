@@ -40,7 +40,7 @@ stages:
     steps:
     - checkout: self 
       clean: true
-  - job: Checkout
+  - job: variablesetup
     variables:     
       SPNum : ${{parameters.sprint_number}}
 
