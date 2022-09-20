@@ -39,7 +39,7 @@ stages:
     timeoutInMinutes: 0
     displayName: 'Checkout'
     steps:
-    - checkout: self 
+    - checkout: none 
       clean: true
 
     - task: PowerShell@2
@@ -51,7 +51,7 @@ stages:
         $body =@{
           definition = @{
             id = 68        
-           },
+           }
           templateParameters = @{ sprint_number= "test123" }
         }| ConvertTo-Json
 
