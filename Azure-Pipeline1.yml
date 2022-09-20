@@ -1,5 +1,12 @@
 ---
 # Preety Print the  
+
+resources:
+  pipelines:
+  - pipeline: securitylib # Name of the pipeline resource.
+    source: TestCallPipeline # The name of the pipeline referenced by this pipeline resource.
+    trigger: true # Run app-ci pipeline when any run of security-lib-ci completes
+
 trigger:
   branches:
     include:
