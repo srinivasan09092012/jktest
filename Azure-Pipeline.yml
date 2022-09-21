@@ -48,7 +48,7 @@ stages:
           'Headers'= @{'Authorization' = 'Basic ' + $pat}
           'Method'= 'Post'
           'ContentType' = 'application/json'
-          'Body'= '{"templateParameters":{"sprint_number":"102"}}'}
+          'Body'= '{"parameters":{"sprint_number":"102"}}'}
           $result = Invoke-RestMethod @params
           write-host $result
           }
