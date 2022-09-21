@@ -17,7 +17,7 @@ trigger:
       - '*'
 
 parameters:
-- name: sprint_number
+- name: Test_Paraj
   displayName: Sprint Number
   type: string
   default: "9"
@@ -42,7 +42,7 @@ stages:
       clean: true
   - job: variablesetup
     variables:     
-      SPNum : ${{parameters.sprint_number}}
+      SPNum : ${{parameters.Test_Paraj}}
 
     steps:
     - task: PowerShell@2
@@ -50,5 +50,5 @@ stages:
       inputs:
        targetType: 'inline'
        script: |
-        Write-Host ${{parameters.sprint_number}}
+        Write-Host ${{parameters.Test_Paraj}}
    
