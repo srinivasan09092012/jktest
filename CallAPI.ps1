@@ -1,4 +1,5 @@
-﻿$pat = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":iyj3a262zaa33swytf55j3hwczjwyf2tytnsqvizt3mlaktnfpma"))
+﻿[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+$pat = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":iyj3a262zaa33swytf55j3hwczjwyf2tytnsqvizt3mlaktnfpma"))
         
 write-host "Auth print"
 
