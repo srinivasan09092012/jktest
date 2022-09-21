@@ -57,6 +57,7 @@ stages:
           'ContentType' = 'application/json'
           'Body'= $body
           }
+          }
           catch {
           Write-Host "An error occurred:"
           Write-Host $_.ScriptStackTrace
