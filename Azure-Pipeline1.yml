@@ -50,5 +50,5 @@ stages:
       inputs:
        targetType: 'inline'
        script: |
-        Write-Host $(SPNum)
+        Write-Host ${{parameters.sprint_number}}
    
