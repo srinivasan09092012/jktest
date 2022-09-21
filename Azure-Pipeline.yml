@@ -57,7 +57,7 @@ stages:
           'ContentType' = 'application/json'
           'Body'= $bodyString
           }
-          $result = Invoke-RestMethod @params
+          #$result = Invoke-RestMethod @params
           write-host $result
           }
           catch {
