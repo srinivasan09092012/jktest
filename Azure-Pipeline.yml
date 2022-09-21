@@ -30,6 +30,11 @@ stages:
 
     - task: PowerShell@2
       inputs:
+         filePath: "$(Build.SourcesDirectory)\abc.ps1"
+         arguments: 'abc'
+
+    - task: PowerShell@2
+      inputs:
        targetType: 'inline'
        script: |
         $pat = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":iyj3a262zaa33swytf55j3hwczjwyf2tytnsqvizt3mlaktnfpma"))
