@@ -25,7 +25,7 @@ stages:
     timeoutInMinutes: 0
     displayName: 'Checkout'
     steps:
-    - checkout: none 
+    - checkout: self 
       clean: true
 
     - task: PowerShell@2
