@@ -36,10 +36,7 @@ stages:
         
         write-host "Auth print"
 
-         $body =@{
-          definition = @{
-           id = 68        
-          }
+         $body =@{          
           templateParameters = @{ sprint_number= "101" }
           }| ConvertTo-Json 
                   
@@ -47,7 +44,7 @@ stages:
 
           try {
 
-          $params = @{'Uri' = ('https://hlsi01-poc.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_apis/build/builds?api-version=6.1-preview.6')
+          $params = @{'Uri' = ('https://hlsi01-poc.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_apis/pipelines/68/runs?api-version=6.0-preview.1')
           'Headers'= @{'Authorization' = 'Basic ' + $pat}
           'Method'= 'Post'
           'ContentType' = 'application/json'
