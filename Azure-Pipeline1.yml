@@ -20,7 +20,7 @@ parameters:
 - name: sprint_number
   displayName: Sprint Number
   type: string
-  default: " "
+  default: "9"
 
 variables:
 - name: buildTimeStamp # will be set by script
