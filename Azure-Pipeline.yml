@@ -62,27 +62,7 @@ stages:
           Write-Host $_.ScriptStackTrace
           }
 
-          $body =@{          
-          templateParameters = @{ sprint_number= "101" }
-          }| ConvertTo-Json 
-
-          write-host $body
-
-          try {
-
-          $params = @{'Uri' = ('https://hlsi01-poc.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_apis/pipelines/68/runs?api-version=6.0-preview.1')
-          'Headers'= @{'Authorization' = 'Basic ' + $pat}
-          'Method'= 'Post'
-          'ContentType' = 'application/json'
-          'Body'= '{"parameters":{"sprint_number":"102"}}'
-          }
-          $result = Invoke-RestMethod @params
-          write-host $result
-          }
-          catch {
-          Write-Host "An error occurred:"
-          Write-Host $_.ScriptStackTrace
-          }
+        
 
 
 
