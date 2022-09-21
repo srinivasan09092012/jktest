@@ -37,11 +37,27 @@ stages:
         write-host "Auth print"        
 
 
-        $params = @{'Uri' = ('https://hlsi01-poc.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_apis/pipelines/68/runs?api-version=6.0-preview.1')
-        'Headers'= @{'Authorization' = 'Basic ' + $pat}
-        'Method'= 'Post'
-        'ContentType' = 'application/json'
-        'Body'= "{'templateParameters': {'Test_Paraj': 'test'}}"
-        }
-        $result = Invoke-RestMethod @params
-        write-host $result
+        $body = "{'definition': {'id': 68},'templateParameters': {'Test_Paraj': 'test'}}"
+        $bodyJson=$body | ConvertFrom-Json
+        $bodyString=$bodyJson | ConvertTo-Json -Depth 100
+        write-host $body
+        write-host $bodyString
+
+          try {
+
+          $params = @{'Uri' = ('https://hlsi01-poc.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_apis/build/builds?api-version=7.1-preview.7')
+          'Headers'= @{'Authorization' = 'Basic ' + $pat}
+          'Method'= 'Post'
+          'ContentType' = 'application/json'
+          'Body'= $bodyString
+          }
+          }
+          catch {
+          Write-Host "An error occurred:"
+          Write-Host $_.ScriptStackTrace
+          }
+
+        
+
+
+
