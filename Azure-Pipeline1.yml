@@ -51,4 +51,5 @@ stages:
        targetType: 'inline'
        script: |
         Write-Host ${{parameters.Test_Paraj}}
+        Write-Host $(Test_Paraj)
    
