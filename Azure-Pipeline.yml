@@ -36,14 +36,12 @@ stages:
         
         write-host "Auth print"
 
-          $body =@{
+         $body =@{
           definition = @{
-          id = 68        
+           id = 68        
           }
-          templateParameters = @{
-          sprint_number= 66
-          }
-          }| ConvertTo-Json
+          templateParameters = @{ sprint_number= "101" }
+          }| ConvertTo-Json 
                   
           write-host $body
 
