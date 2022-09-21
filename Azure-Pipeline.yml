@@ -36,7 +36,7 @@ stages:
         
         write-host "Auth print"        
 
-        $body = "{'parameters':  '{\'Test1\'':  \'9\''}'','definition': {'id': 68},'templateParameters': {'Test_Paraj': 'test'}}"
+        $body = "{'definition': {'id': 68},'templateParameters': {'Test_Paraj': 'test'}}"
         $bodyJson=$body | ConvertFrom-Json
         $bodyString=$bodyJson | ConvertTo-Json -Depth 100
         write-host $body
