@@ -43,9 +43,4 @@ stages:
         'ContentType' = 'application/json'
         'Body'= "{'templateParameters': {'Test_Paraj': 'test'}}"
         $result = Invoke-RestMethod @params
-        write-host  ------------------
-      
-        
-
-
-
+        write-host $result
