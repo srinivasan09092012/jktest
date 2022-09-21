@@ -25,6 +25,7 @@ parameters:
 variables:
 - name: buildTimeStamp # will be set by script
 - name: buildNum
+- name: Testvar
 
 stages:
 
@@ -59,4 +60,5 @@ stages:
        script: |
         Write-Host ${{parameters.Test_Paraj}}
         Write-Host $(Test1)
+        Write-Host $(Testvar)
    
