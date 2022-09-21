@@ -44,8 +44,14 @@ stages:
                           "Test_Paraj": "test9",
                       }
                   }"  
+         $body = "{`"definition`": {`"id`": 68},`"templateParameters`": {`"Test_Paraj`": `"test123`",}}"  
 
-           write-host $body
+
+        $body = "{'definition': {'id': 68},'templateParameters': {'Test_Paraj': 'test'}}"
+        $bodyJson=$body | ConvertFrom-Json
+        $bodyString=$bodyJson | ConvertTo-Json -Depth 100
+        write-host $body
+        write-host $bodyString
 
           try {
 
@@ -53,7 +59,7 @@ stages:
           'Headers'= @{'Authorization' = 'Basic ' + $pat}
           'Method'= 'Post'
           'ContentType' = 'application/json'
-          'Body'= $body
+          'Body'= $bodyString
           }
           }
           catch {
