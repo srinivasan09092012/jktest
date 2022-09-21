@@ -35,7 +35,6 @@ stages:
         $pat = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":iyj3a262zaa33swytf55j3hwczjwyf2tytnsqvizt3mlaktnfpma"))
         $AzureDevOpsAuthenicationHeader = @{Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$(AdoUserid):$(AdoPassword)")) }
         write-host "Auth print"
-        write-host $AzureDevOpsAuthenicationHeader
 
         $body =@{
           definition = @{
