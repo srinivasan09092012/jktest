@@ -33,23 +33,32 @@ stages:
        targetType: 'inline'
        script: |
         $pat = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":iyj3a262zaa33swytf55j3hwczjwyf2tytnsqvizt3mlaktnfpma"))
-        $AzureDevOpsAuthenicationHeader = @{Authorization = 'Basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$(AdoUserid):$(AdoPassword)")) }
+        
         write-host "Auth print"
 
-        $body =@{
+          $body =@{
           definition = @{
-            id = 68        
-           }
+          id = 68        
+          }
           templateParameters = @{ sprint_number= "test123" }
-        }| ConvertTo-Json
+          }| ConvertTo-Json
+                  
+          write-host $body
 
-        write-host $body
-        $params = @{'Uri' = ('https://hlsi01-poc.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_apis/build/builds?api-version=6.1-preview.6')
-        'Headers'= @{'Authorization' = 'Basic ' + $pat}
-        'Method'= 'Post'
-        'ContentType' = 'application/json'
-        'Body'= ($body)}
-        $result = Invoke-RestMethod @params
+          try {
+
+          $params = @{'Uri' = ('https://hlsi01-poc.visualstudio.com/USHC_AMER_US_ADU_HSP_Ua3/_apis/build/builds?api-version=6.1-preview.6')
+          'Headers'= @{'Authorization' = 'Basic ' + $pat}
+          'Method'= 'Post'
+          'ContentType' = 'application/json'
+          'Body'= ($body)}
+          $result = Invoke-RestMethod @params
+          write-host $result
+          }
+          catch {
+          Write-Host "An error occurred:"
+          Write-Host $_.ScriptStackTrace
+          }
 
 
 
